@@ -11,6 +11,7 @@ use App\Http\Controllers\PerangkatDesaController;
 use App\Http\Controllers\LembagaDesaController;
 use App\Http\Controllers\JabatanLembagaController;
 use App\Http\Controllers\AnggotaLembagaController;
+ use App\Http\Controllers\SicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +53,16 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('informasi_umum', InformasiUmumController::class)
         ->except(['show']);
+       
+
+/*
+|--------------------------------------------------------------------------
+| SIC (SOAL)
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/sic/{value}', [SicController::class, 'handle'])
+    ->where('value', '[0-9]+');
+
         
 });
